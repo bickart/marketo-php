@@ -1,32 +1,23 @@
 # Marketo PHP API client
 
-[![Version](https://img.shields.io/packagist/v/bickart/plivo-php.svg?style=flat-square)](https://packagist.org/packages/bickart/plivo-php)
- [![Total Downloads](https://img.shields.io/packagist/dt/bickart/plivo-php.svg?style=flat-square)](https://packagist.org/packages/bickart/plivo-php)
- [![License](https://img.shields.io/packagist/l/bickart/plivo-php.svg?style=flat-square)](https://packagist.org/packages/bickart/plivo-php)
- [![CodeClimate Test Coverage](https://img.shields.io/codeclimate/coverage/github/bickart/plivo-php.svg?style=flat-square)](https://codeclimate.com/github/bickart/plivo-php/coverage)
- [![Build Status](https://img.shields.io/travis/bickart/plivo-php.svg?style=flat-square)](https://travis-ci.org/bickart/plivo-php)
+[![Version](https://img.shields.io/packagist/v/bickart/marketo-php.svg?style=flat-square)](https://packagist.org/packages/bickart/marketo-php)
+ [![Total Downloads](https://img.shields.io/packagist/dt/bickart/marketo-php.svg?style=flat-square)](https://packagist.org/packages/bickart/marketo-php)
+ [![License](https://img.shields.io/packagist/l/bickart/marketo-php.svg?style=flat-square)](https://packagist.org/packages/bickart/marketo-php)
+ [![CodeClimate Test Coverage](https://img.shields.io/codeclimate/coverage/github/bickart/marketo-php.svg?style=flat-square)](https://codeclimate.com/github/bickart/marketo-php/coverage)
+ [![Build Status](https://img.shields.io/travis/bickart/marketo-php.svg?style=flat-square)](https://travis-ci.org/bickart/marketo-php)
 
 Marketo API client. The sequel to my [perfectly functional wrapper](https://github.com/fungku/hubspot) of HubSpot/haPihP.
 client. However, this is a complete re-write and includes some of the new COS/v2 endpoints.
 
 ## ANNOUNCEMENT!
 
-RC-1 just released! Please note the breaking changes in the [CHANGELOG](https://github.com/bickart/plivo-php/blob/master/CHANGELOG.md)
-
-**TL;DR Most importantly:**
-
-- Package name changed from `fungku/hubspot-php` to `bickart/plivo-php`
-- Namespace changed from `Fungku\HubSpot` to `Amaiza\Marketo`
-- `HubSpotService` class renamed to `Factory`
-- `HubSpotService::make()` is now `Factory::create()`
-- `HubSpotService::makeWithToken()` is now `Factory::createWithToken()`
 
 ## Setup
 
 **Composer:**
 
 ```bash
-composer require "bickart/plivo-php:1.0.*@dev"
+composer require "bickart/marketo-php:1.0.*@dev"
 ```
 
 ## Quickstart
