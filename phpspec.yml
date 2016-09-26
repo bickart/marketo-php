@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Amaiza\Marketo
+        psr4_prefix: Amaiza\Marketo
+        spec_path: tests

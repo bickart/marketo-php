@@ -1,0 +1,39 @@
+{
+  "name": "bickart/marketo-php",
+  "description": "Marketo PHP REST API client",
+  "keywords": [
+    "marketo",
+    "api"
+  ],
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Jeff Bickart",
+      "email": "jbickart@gmail.com",
+      "homepage": "http://www.amaiza.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpspec/phpspec": "~2.0",
+    "phpunit/phpunit": "~5.0",
+    "codeclimate/php-test-reporter": " dev-master@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Amaiza\\Marketo\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Amaiza\\Marketo\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable"
+}
