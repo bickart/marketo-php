@@ -17,3 +17,5 @@ class Opportunities extends LeadDatabase
         parent::__construct($client, 'opportunities');
     }
 }
+
+//5593

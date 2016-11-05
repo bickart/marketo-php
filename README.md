@@ -6,18 +6,16 @@
  [![CodeClimate Test Coverage](https://img.shields.io/codeclimate/coverage/github/bickart/marketo-php.svg?style=flat-square)](https://codeclimate.com/github/bickart/marketo-php/coverage)
  [![Build Status](https://img.shields.io/travis/bickart/marketo-php.svg?style=flat-square)](https://travis-ci.org/bickart/marketo-php)
 
-Marketo API client. The sequel to my [perfectly functional wrapper](https://github.com/fungku/hubspot) of HubSpot/haPihP.
-client. However, this is a complete re-write and includes some of the new COS/v2 endpoints.
+Marketo API client: A PHP REST client 
 
 ## ANNOUNCEMENT!
-
 
 ## Setup
 
 **Composer:**
 
 ```bash
-composer require "bickart/marketo-php:1.0.*@dev"
+composer require "bickart/marketo-php:1.0"
 ```
 
 ## Quickstart
@@ -27,34 +25,34 @@ composer require "bickart/marketo-php:1.0.*@dev"
 All following examples assume this step.
 
 ```php
-$hubspot = Amaiza\Marketo\Factory::create('api-key');
+$marketo = Amaiza\Marketo\Factory::create('REST API Endpoint', 'REST CLIENT ID', 'REST CLIENT SECRET');
 
 // OR instantiate by passing a configuration array.
 // The only required value is the 'key'
 
-$hubspot = new Amaiza\Marketo\Factory([
-  'key'      => 'demo',
-  'oauth'    => false, // default
-  'base_url' => 'https://api.hubapi.com' // default
+$marketo = new Amaiza\Marketo\Factory([
+  'url'      => 'REST API Endpoint',
+  'client_id'    => 'REST CLIENT ID', 
+  'client_secret' => 'REST CLIENT SECRET'
 ]);
 ```
-*Note:* The Client class checks for a `HUBSPOT_SECRET` environment variable if you don't include an api key or oauth token during instantiation.
+*Note:* The Client class checks for a `MARKETO_ENDPOINT`, `MARKETO_CLIENT_ID`, and `MARKETO_CLIENT_SECRET` environment variable if you don't include an tokens during instantiation.
 
-#### Get a single contact:
+#### Get a single lead:
 
 ```php
-$contact = $hubspot->contacts()->getByEmail("test@hubspot.com");
+$lead = $marketo->leads()->getById(1);
 
-echo $contact->properties->email->value;
+echo $lead->data->result[0]->email;
 ```
 
-#### Paginate through all contacts:
+#### Paginate through all leads:
 
 ```php
 // Get an array of 10 contacts
 // getting only the firstname and lastname properties
 // and set the offset to 123456
-$response = $hubspot->contacts()->all([
+$response = $marketo->leads()->all([
     'count'     => 10,
     'property'  => ['firstname', 'lastname'],
     'vidOffset' => 123456,

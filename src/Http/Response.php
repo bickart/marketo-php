@@ -58,6 +58,12 @@ class Response implements ResponseInterface, ArrayAccess
         return $this->data;
     }
 
+    function isSuccess()
+    {
+        return $this->data->success;
+    }
+
+
     /**
      * Whether a offset exists
      *

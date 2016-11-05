@@ -15,6 +15,7 @@ use Amaiza\Marketo\Http\Client;
  * @method \Amaiza\Marketo\Resources\OpportunityRoles opportunityroles()
  * @method \Amaiza\Marketo\Resources\SalesPersons salespersons()
  * @method \Amaiza\Marketo\Resources\Stats stats()
+ * @method \Amaiza\Marketo\Resources\Activities activities()
  */
 class Factory
 {

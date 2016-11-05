@@ -3,6 +3,8 @@
 namespace Amaiza\Marketo\Resources;
 
 use Amaiza\Marketo\Exceptions\MarketoException;
+use Amaiza\Marketo\Factory;
+use Amaiza\Marketo\Http\Response;
 
 class Leads extends LeadDatabase
 {
@@ -69,6 +71,49 @@ class Leads extends LeadDatabase
         }
 
         return $this->client->request('post', $endpoint, $options);
+    }
+
+    public function all()
+    {
+        $response = null;
+
+        $maxLeadId = 0;
+        $marketo = Factory::create(null, null, null, $this->client);
+
+        $dt = new \DateTime('now', new \DateTimeZone('UTC'));
+        $dt->sub(new \DateInterval('P5Y'));
+        $token = $marketo->activities()->pagingToken(['sinceDatetime' => $dt->format(DATE_W3C)]);
+
+        if ($token->isSuccess()) {
+            $results = $this->getLeadCreatedActivity($marketo, $token->nextPageToken);
+            while ($results->isSuccess() && $results->moreResult) {
+                $results = $this->getLeadCreatedActivity($marketo, $results->nextPageToken);
+            };
+
+            foreach ($results->result as $item) {
+                if ($item->leadId > $maxLeadId) {
+                    $maxLeadId = $item->leadId;
+                }
+            }
+
+            print_r($maxLeadId);
+
+            $response = $this->getLeadsByFilterType('id', array($maxLeadId))->getData();
+
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param $marketo
+     * @param $nextPageToken
+     *
+     * @return \Amaiza\Marketo\Http\Response
+     */
+    private function getLeadCreatedActivity($marketo, $nextPageToken)
+    {
+        return $marketo->activities()->activities(['activityTypeIds' => 12, 'nextPageToken' => $nextPageToken]);
     }
 
 }
